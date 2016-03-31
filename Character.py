@@ -16,7 +16,7 @@ class Character(object):
     def __init__(self, name):
         """name"""
         self.name = name
-        self.id = random.randint(9999, 100000)
+        self.id = 0
 
         """weapon stats"""
         self.hammer = 20
@@ -51,7 +51,7 @@ class Character(object):
     def getShield(self):
         return self.shield
     
-    def getAppid(self):
+    def getID(self):
         return self.id
 
     def getGold(self):
@@ -86,6 +86,9 @@ class Character(object):
 
     def setHp(self, value):
         self.hp = value
+
+    def setID(self, value):
+        self.id = value
 
     """
     All the INCREASE function go here
