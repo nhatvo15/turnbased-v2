@@ -86,11 +86,18 @@ def intro_menu():
     return player
 
 def fight():
-    print("""
-    ->import world
-    ->interative with Arena()
-    ->save_character() 
-    """)
+    opt_list = ['rock', 'scissor', 'paper']
+    x = 2
+    y = 0
+
+    if x==y:
+        print('tie ' + opt_list[x] + ' = ' + opt_list[y])
+    elif y==(x+1)%3:
+        print('p1 won ' + opt_list[x] + ' > ' + opt_list[y])
+    else:
+        print('p2 won ' + opt_list[y] + ' > ' + opt_list[x])
+
+    return "win?"
 
 
 ########################################

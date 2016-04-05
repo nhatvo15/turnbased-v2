@@ -109,8 +109,7 @@ def test():
     userID = newID_validate()
     print(userID)
 
-test()
-
+IdPC()
 
     
 
