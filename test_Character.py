@@ -2,9 +2,12 @@ from Character import *
 import pickle
 import random
 #########################################
-#SUPPORT functions                      #
-#---sub functions support ULTT function #
+#                                       #
+#            ID Functions               #
+#                                       #
 #########################################
+"""   Support creating unique ID
+"""
 def makeID():
     _id = random.randint(99, 200)
     return _id
@@ -33,8 +36,9 @@ def newID_validate():
     return userID
 
 #########################################
-#ULTILITY functions                     #
-#---sub functions support MENU function #
+#                                       #
+#          Character Functions          #
+#                                       #
 #########################################
 def save_character(character):
     with open(character.getName()+'.dat', 'wb') as _file: #save by ID instead by name
@@ -67,8 +71,9 @@ def load_character(charname):
     return character
 
 ########################################
-#MENU functions                        #
-#---compile sub functions              #
+#                                      #
+#           MENU functions             #
+#                                      #
 ########################################
 def intro_menu():
     print("Welcome to the game!!!")
@@ -85,19 +90,16 @@ def intro_menu():
         player = intro_menu()
     return player
 
-def fight():
-    opt_list = ['rock', 'scissor', 'paper']
-    x = 2
-    y = 0
+def worlds_stats_menu():
+    print("""
+    Show statistic of completion from all the worlds
+    This leads to the worlds selection of which world the player want to play
+    """)
+    continue
 
-    if x==y:
-        print('tie ' + opt_list[x] + ' = ' + opt_list[y])
-    elif y==(x+1)%3:
-        print('p1 won ' + opt_list[x] + ' > ' + opt_list[y])
-    else:
-        print('p2 won ' + opt_list[y] + ' > ' + opt_list[x])
-
-    return "win?"
+def worlds_selection():
+    """should return the world"""
+    continue
 
 
 ########################################
