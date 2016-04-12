@@ -28,6 +28,7 @@ class World_small(object):
         """name"""
         self.name = name
         self.lev = level
+        self.size = "small"
         self.mob1 = Character("mob1")
         self.mob2 = Character("mob2")
         self.mob3 = Character("mob3")
@@ -55,9 +56,13 @@ class World_small(object):
         
 
     def getStat(self):
-        print("""Return statistic of this world
-              include: how many mobs left unkilled, NPC left undiscovered""")
-
+        print("Statistic: ")
+        print("Name:{0} Size:{1} Level:{2}".format(self.name, self.size, self.lev))
+        self.mob1._repr()
+        self.mob2._repr()
+        self.mob3._repr()
+        self.boss._repr()
+        
     def getName(self):
         return self.name
 
@@ -96,11 +101,12 @@ class World_small(object):
 #         MEDIUM WORLD           #
 #                                #
 ##################################
-def World_medium(object):
+class World_medium(object):
     def __init__(self, name, level):
         """name"""
         self.name = name
         self.lev = level
+        self.size = "medium"
         self.mob1 = Character("mob1")
         self.mob2 = Character("mob2")
         self.mob3 = Character("mob3")
@@ -135,12 +141,17 @@ def World_medium(object):
             self.mob4.setDamAll(LEV4_LOW, LEV4_HIGH)
             self.mob5.setDamAll(LEV4_LOW, LEV4_HIGH)
             self.boss.setDamAll(LEV4_LOW+3, LEV4_HIGH+3)
-        
 
     def getStat(self):
-        print("""Return statistic of this world
-              include: how many mobs left unkilled, NPC left undiscovered""")
-
+        print("Statistic: ")
+        print("Name:{0} Size:{1} Level:{2}".format(self.name, self.size, self.lev))
+        self.mob1._repr()
+        self.mob2._repr()
+        self.mob3._repr()
+        self.mob4._repr()
+        self.mob5._repr()
+        self.boss._repr()
+        
     def getName(self):
         return self.name
 
@@ -192,11 +203,12 @@ def World_medium(object):
 #           BIG WORLD            #
 #                                #
 ##################################
-def World_big(object):
+class World_big(object):
     def __init__(self, name, level):
         """name"""
         self.name = name
         self.lev = level
+        self.size = "big"
         self.mob1 = Character("mob1")
         self.mob2 = Character("mob2")
         self.mob3 = Character("mob3")
@@ -248,9 +260,18 @@ def World_big(object):
             self.boss2.setDamAll(LEV4_LOW+3, LEV4_HIGH+3)        
 
     def getStat(self):
-        print("""Return statistic of this world
-              include: how many mobs left unkilled, NPC left undiscovered""")
-
+        print("Statistic: ")
+        print("Name:{0} Size:{1} Level:{2}".format(self.name, self.size, self.lev))
+        self.mob1._repr()
+        self.mob2._repr()
+        self.mob3._repr()
+        self.mob4._repr()
+        self.mob5._repr()
+        self.mob6._repr()
+        self.mob7._repr()
+        self.boss1._repr()
+        self.boss2._repr()
+        
     def getName(self):
         return self.name
 
