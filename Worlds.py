@@ -6,15 +6,29 @@ import items
 this feature support mods who can drop out/sell item which quality depends on
 chances and the difficulty of the world
 """
+##################################
+#                                #
+#          MONSTER NAMES         #
+#                                #
+##################################
+MONSTER_NAMES_LIST = ('CLEMENTINE', 'BLACKBERRY', 'SATSUMA', 'PAPAYA',
+                       'APPLE', 'TOMATO', 'HONEYDEW', 'MANGO', 'GRAPEFRUIT',
+                       'APRICOT', 'AVOCADO', 'LIME', 'TANGERINE', 'HUCKLEBERRY',
+                       'POMEGRANATE', 'NECTARINE', 'GUAVA', 'KUMQUAT', 'COCONUT',
+                       )
+LENGTH_NAMES = len(MONSTER_NAMES_LIST) - 1
 
 ##################################
+#                                #
 # GLOBAL VARAIBLE FOR            #
 #     DAMAGE DEPENDS ON LEVEL    #
+#                                #
 ##################################
-LEV1_LOW, LEV1_HIGH = 10, 15
-LEV2_LOW, LEV2_HIGH = 15, 20
-LEV3_LOW, LEV3_HIGH = 20, 25
-LEV4_LOW, LEV4_HIGH = 25, 30
+
+LEV1_LOW, LEV1_HIGH = 10, 15 #lv1
+LEV2_LOW, LEV2_HIGH = 15, 20 #lv2
+LEV3_LOW, LEV3_HIGH = 20, 25 #lv3
+LEV4_LOW, LEV4_HIGH = 25, 30 #lv4
 
 
 
@@ -29,10 +43,10 @@ class World_small(object):
         self.name = name
         self.lev = level
         self.size = "small"
-        self.mob1 = Character("mob1")
-        self.mob2 = Character("mob2")
-        self.mob3 = Character("mob3")
-        self.boss = Character("boss")
+        self.mob1 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob1
+        self.mob2 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob2
+        self.mob3 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob3
+        self.boss = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]+" ELITE") #boss
         if self.lev==1:
             self.mob1.setDamAll(LEV1_LOW, LEV1_HIGH)
             self.mob2.setDamAll(LEV1_LOW, LEV1_HIGH)
@@ -95,7 +109,6 @@ class World_small(object):
 
 
 
-
 ##################################
 #                                #
 #         MEDIUM WORLD           #
@@ -107,12 +120,12 @@ class World_medium(object):
         self.name = name
         self.lev = level
         self.size = "medium"
-        self.mob1 = Character("mob1")
-        self.mob2 = Character("mob2")
-        self.mob3 = Character("mob3")
-        self.mob4 = Character("mob4")
-        self.mob5 = Character("mob5")
-        self.boss = Character("boss")
+        self.mob1 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob1
+        self.mob2 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob2
+        self.mob3 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob3
+        self.mob4 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob4
+        self.mob5 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob5
+        self.boss = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]+" ELITE") #boss
         if self.lev==1:
             self.mob1.setDamAll(LEV1_LOW, LEV1_HIGH)
             self.mob2.setDamAll(LEV1_LOW, LEV1_HIGH)
@@ -209,15 +222,15 @@ class World_big(object):
         self.name = name
         self.lev = level
         self.size = "big"
-        self.mob1 = Character("mob1")
-        self.mob2 = Character("mob2")
-        self.mob3 = Character("mob3")
-        self.mob4 = Character("mob4")
-        self.mob5 = Character("mob5")
-        self.mob6 = Character("mob6")
-        self.mob7 = Character("mob7")
-        self.boss1 = Character("boss1")
-        self.boss2 = Character("boss2")
+        self.mob1 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob1
+        self.mob2 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob2
+        self.mob3 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob3
+        self.mob4 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob4
+        self.mob5 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob5
+        self.mob6 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob6
+        self.mob7 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]) #mob7
+        self.boss1 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]+" ELITE") #boss1
+        self.boss2 = Character(MONSTER_NAMES_LIST[random.randint(0, LENGTH_NAMES)]+" ELITE") #boss2
         if self.lev==1:
             self.mob1.setDamAll(LEV1_LOW, LEV1_HIGH)
             self.mob2.setDamAll(LEV1_LOW, LEV1_HIGH)
