@@ -1,6 +1,9 @@
 from Character import *
+from PATHS import *
 import pickle
 import random
+
+_PATH = PATH()
 #########################################
 #                                       #
 #            ID Functions               #
@@ -41,9 +44,9 @@ def newID_validate():
 #                                       #
 #########################################
 def save_character(character):
-    with open(character.getName()+'.dat', 'wb') as _file: #save by ID instead by name
+    nameWpath = _PATH.character(character.getName())
+    with open(nameWpath, 'wb') as _file: 
         pickle.dump(character, _file, pickle.HIGHEST_PROTOCOL)
-    print('SAVE COMPLETED!!!')
 
 def create_character():
     name = input("Enter character name:")
@@ -56,9 +59,9 @@ def create_character():
 
 def load_character(charname):
     try:
-        with open(charname+'.dat', 'rb') as _file: #load by charname.getID instead of getName()
+        nameWpath = _PATH.character(charname)
+        with open(nameWpath, 'rb') as _file: #load by charname.getID instead of getName()
             character = pickle.load(_file)
-            print("We meet again", character.getName())
     except FileNotFoundError:
         ask = input('Try again?[y/n]')
         if ask == 'y':
@@ -67,7 +70,6 @@ def load_character(charname):
         else:
             print('LOAD FAIL!')
             character = 'LOAD FAIL!'
-    print('LOAD COMPLETED!!!')
     return character
 
 ########################################
@@ -77,17 +79,18 @@ def load_character(charname):
 ########################################
 def intro_menu():
     print("Welcome to the game!!!")
-    opt = input("(N)ew charater/(L)oad character:")
-    if opt == "N":
+    opt = eval(input("New[1] Load[2] Exit[3]:"))
+    if opt == 1:
         player = create_character() #->create
         print(player.getName())
-        print("Greetings new comer", player.getName())
-    elif opt == "L":
+        print("Greetings new comer", player.getName(), player.getID())
+    elif opt == 2:
         charname = input("Enter your character name: ")
         player = load_character(charname)
+        print("We meet again", player.getName(), player.getID())
     else:
-        print('Restart!')
-        player = intro_menu()
+        print('See You Again!')
+        player = 'quit'
     return player
 
 def worlds_stats_menu():
@@ -95,19 +98,16 @@ def worlds_stats_menu():
     Show statistic of completion from all the worlds
     This leads to the worlds selection of which world the player want to play
     """)
-    continue
 
-def worlds_selection():
+#def worlds_selection():
     """should return the world"""
-    continue
+   # continue
 
 
 ########################################
 #MAIN                                  #
 ########################################
 def main():
-    player = intro_menu()
-    print(player.getID())
-    
+    player = intro_menu()    
 
 main()
