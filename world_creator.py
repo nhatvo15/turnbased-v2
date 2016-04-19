@@ -1,5 +1,9 @@
 from Worlds import *
+from PATHS import *
 import pickle
+
+_PATH = PATH() #directory path for to save and load
+
 
 ##############################
 #                            #
@@ -24,12 +28,14 @@ def create_big(name, dif):
 #                            #
 ##############################
 def save(world):
-    with open(world.getName()+'.world', 'wb') as _file:
+    nameWpath = _PATH.world(world.getName()) #save as 
+    with open(nameWpath, 'wb') as _file:
         pickle.dump(world, _file, pickle.HIGHEST_PROTOCOL)
 
 def load(worldname):
     try:
-        with open(worldname+'.world', 'rb') as _file:
+        nameWpath = _PATH.world(worldname) #load as
+        with open(nameWpath, 'rb') as _file:
             world = pickle.load(_file)
             world.getStat()
     except FileNotFoundError:
@@ -50,15 +56,15 @@ def WCA():
         if choice==1: #New
             size=eval(input("S[1] M[2] L[3]"))
             if size==1: #small
-                name, dif = map(str, input("new_name *space* lv(1-4)").split())
+                name, dif = map(str, input("name and level(1-4)").split())
                 dif=int(dif)
                 world = create_small(name, dif)
             elif size==2: #medium
-                name, dif = map(str, input("new_name *space* lv(1-4)").split())
+                name, dif = map(str, input("name and level(1-4)").split())
                 dif=int(dif)
                 world = create_medium(name, dif)
             elif size==3: #large
-                name, dif = map(str, input("new_name *space* lv(1-4)").split())
+                name, dif = map(str, input("name and level(1-4)").split())
                 dif=int(dif)
                 world = create_big(name, dif)
             save(world) #saving
