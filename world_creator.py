@@ -1,4 +1,5 @@
 from Worlds import *
+import pickle
 
 ##############################
 #                            #
@@ -8,7 +9,7 @@ from Worlds import *
 def create_small(name, dif):
     ws = World_small(name, dif)
     return ws
-
+1
 def create_medium(name, dif):
     wm = World_medium(name, dif)
     return wm
@@ -41,21 +42,24 @@ def load(worldname):
 # World Control Application  #
 #                            #
 ##############################
-def WCA:
+def WCA():
     print("Welcome to World Control Application")
     choice=0
-    while choice:
-        choice=eval(input("CreateNew[1] Load[2]"))
+    while choice==0:
+        choice=eval(input("CreateNew[1] Load[2] Exit[3]"))
         if choice==1: #New
-            choice=eval(input("S[1] M[2] L[3]"))
-            if choice==1: #small
-                name, dif = input("new_name *space* lv(1-4)")
+            size=eval(input("S[1] M[2] L[3]"))
+            if size==1: #small
+                name, dif = map(str, input("new_name *space* lv(1-4)").split())
+                dif=int(dif)
                 world = create_small(name, dif)
-            elif choice==2: #medium
-                name, dif = input("new_name *space* lv(1-4)")
+            elif size==2: #medium
+                name, dif = map(str, input("new_name *space* lv(1-4)").split())
+                dif=int(dif)
                 world = create_medium(name, dif)
-            elif choice==3: #large
-                name, dif = input("new_name *space* lv(1-4)")
+            elif size==3: #large
+                name, dif = map(str, input("new_name *space* lv(1-4)").split())
+                dif=int(dif)
                 world = create_big(name, dif)
             save(world) #saving
 
@@ -65,12 +69,18 @@ def WCA:
                 world = load(name)
                 if world==None:
                     ask = input("World NOT FOUND/ Try again[y/n]: ")
-                    if ask==y:
+                    if ask=='y':
                         continue
                     else:
                         choice=1
                 else:
-                    choice=1
+                    choice=0
+        else:
+             break
+
+    world.getStat()
+
+WCA()
 
                         
 
