@@ -1,4 +1,4 @@
-from Character import *
+from Character_Class import *
 from PATHS import *
 import pickle
 import random
@@ -98,8 +98,8 @@ def intro_menu():
 #             MAIN                     #
 #                                      #
 ########################################
-def main():
+def Player():
     player = intro_menu()
     return player
 
-main()
+Player()
