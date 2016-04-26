@@ -2,6 +2,8 @@ from Character_Class import *
 from PATHS import *
 import pickle
 import random
+import os.path
+import glob
 
 _PATH = PATH()
 #########################################
@@ -72,6 +74,33 @@ def load_character(charname):
             character = 'LOAD FAIL!'
     return character
 
+##############################
+#                            #
+#  Select Existed Character  #
+#                            #
+##############################
+"""
+Display a list of characters in specific folder PATH
+return the name of the selected character
+"""
+def display_list_character():
+    print("Please select an existed character")
+    print("==============================================")
+    count = 1
+    lw = {}
+    worlds = glob.glob(_PATH.getPATH()+'*.character') #get all the file end with .world
+    for w in worlds:
+        w = w[49:] #cut the path
+        w = w[:-10] #cut the tail (.world)
+        lw[str(count)] = w #put them in an cataloged dictionary
+        print(' '+str(count)
+              +'. '+w+'\n') #print the name only
+        count+=1
+    print("==============================================")
+    num = input(":= ")
+    charname = lw[str(num)]
+    return charname
+
 ########################################
 #                                      #
 #           MENU functions             #
@@ -85,7 +114,7 @@ def intro_menu():
         print(player.getName())
         print("Greetings new comer", player.getName(), player.getID())
     elif opt == 2:
-        charname = input("Enter your character name: ")
+        charname = display_list_character()
         player = load_character(charname)
         print("We meet again", player.getName(), player.getID())
     else:
