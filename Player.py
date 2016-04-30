@@ -116,7 +116,7 @@ def intro_menu():
     elif opt == 2:
         charname = display_list_character()
         player = load_character(charname)
-        print("We meet again", player.getName(), player.getID())
+        print(player.getName(), player.getID())
     else:
         print('See You Again!')
         player = 'quit'
@@ -130,5 +130,3 @@ def intro_menu():
 def Player():
     player = intro_menu()
     return player
-
-Player()

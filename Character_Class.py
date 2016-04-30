@@ -13,6 +13,7 @@
     inc*variables*(value)
 """
 import random
+
 class Character(object):
     def __init__(self, name):
         """name"""
@@ -27,10 +28,29 @@ class Character(object):
 
         """related stats"""
         self.hp = 100
+        self.level = 1
         self.exp = 0
+        self.current_max_exp = 100
+        self.next_max_exp = 200
+        self.base_exp = 100
         self.speed = 5
         self.gold = 0
 
+    """EXP system"""
+    #level up if exp exceed current level exp
+    #multi-level up when the exp gained greater than more than 1 level exp limits
+    def level_up(self):
+        self.level+=1
+        self.current_max_exp = self.next_max_exp
+        self.next_max_exp = self.current_max_exp+self.base_exp * self.level #formula
+        if self.exp>=self.current_max_exp:
+            self.level_up()
+        
+    def gainExp(self, value):
+        self.exp+=value
+        if self.exp >= self.current_max_exp:
+            self.level_up()
+            
     """
     All the GET functions go here
     """
@@ -38,7 +58,10 @@ class Character(object):
         print(self.name)
         print("Hammer {0} Scissor {1} Bag {2}".format(self.hammer, self.scissor, self.bag))
         print("ID {0} Gold {1} Hp {2} Exp {3}".format(self.id, self.gold, self.hp, self.exp))        
-        
+
+    def getLevel(self):
+        return self.level
+    
     def getName(self):
         return self.name
 
@@ -124,4 +147,23 @@ class Character(object):
 
     def incExp(self, value):
         self.exp+=value
+        if self.exp >= self.current_max_exp:
+            level_up()
+
+    def incLevel(self, value):
+        self.level+=value
+
+    """bots function ONLY"""
+    def random_choice(self):
+        return random.randint(0, 2)
+    
+    def random_weapon(self):
+        choice = random.randint(0, 2)
+        if choice==0:
+            result = 'rock'
+        elif choice==1:
+            result = 'scissor'
+        elif choice==2:
+            result = 'paper'
+        return result
 

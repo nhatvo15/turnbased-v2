@@ -51,10 +51,13 @@ def load(worldname):
         world = None
     return world
 
+
+
 def World():
     worldname = display_list_world()
     world = load(worldname)
     world.getStat()
     return world
-    
-World()
+
+if __name__=="__World__":
+    World()
