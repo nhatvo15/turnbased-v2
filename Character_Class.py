@@ -21,9 +21,9 @@ class Character(object):
         self.id = 0
 
         """weapon stats"""
-        self.hammer = 20
+        self.rock = 20
         self.scissor = 20
-        self.bag = 20
+        self.paper = 20
         self.shield = 10
 
         """related stats"""
@@ -68,14 +68,23 @@ class Character(object):
     def getSpeed(self):
         return self.speed
 
-    def getHammer(self):
-        return self.hammer
+    def getRock(self):
+        return self.rock
 
     def getScissor(self):
         return self.scissor
 
-    def getBag(self):
-        return self.bag
+    def getPaper(self):
+        return self.paper
+
+    def getWeapon(self, choice):
+        if choice==0:
+            result = self.rock
+        elif choice==1:
+            result = self.scissor
+        elif choice==2:
+            result = self.paper
+        return result
 
     def getShield(self):
         return self.shield
@@ -101,19 +110,19 @@ class Character(object):
     def setSpeed(self, value):
         self.speed = value
 
-    def setHammer(self, value):
-        self.hammer = value
+    def setRock(self, value):
+        self.rock = value
 
     def setScissor(self, value):
         self.scissor = value
 
-    def setBag(self, value):
-        self.bag = value
+    def setPaper(self, value):
+        self.paper = value
 
     def setDamAll(self, low, high):
-        self.hammer = random.randint(low, high)
+        self.rock = random.randint(low, high)
         self.scissor = random.randint(low, high)
-        self.bag = random.randint(low, high)
+        self.paper = random.randint(low, high)
 
     def setShield(self, value):
         self.shield = value
@@ -130,20 +139,20 @@ class Character(object):
     def incSpeed(self, value):
         self.speed+=value
 
-    def incHammer(self, value):
-        self.hammer+=value
+    def incROck(self, value):
+        self.rock+=value
 
     def incScissor(self, value):
         self.scissor+=value
 
-    def incBag(self, value):
-        self.bag+=value
+    def incPaper(self, value):
+        self.paper+=value
 
     def incShield(self, value):
         self.shield+=value
 
     def incHp(self, value):
-        self.Hp+=value
+        self.hp+=value
 
     def incExp(self, value):
         self.exp+=value

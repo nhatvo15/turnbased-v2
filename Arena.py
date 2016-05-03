@@ -83,6 +83,17 @@ def testFight():
 
     #make p1, p2 fight
     res = fight(x, y)
+    p1_won = (p1.getWeapon(x) - p2.getShield())
+    p2_won = (p2.getWeapon(y) - p1.getShield())
+    if res==1:
+        p2.incHp((-1)*p1_won)
+    elif res==2:
+        p1.incHp((-1)*p2_won)
+
+    print(p1.getHp(), p2.getHp())
+    SL.save_character(p1)
+    SL.save_character(p2)
+        
 
 def testEXP():
     player = Player()
