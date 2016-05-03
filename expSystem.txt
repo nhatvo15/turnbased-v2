@@ -1,0 +1,24 @@
+variable:
+	level = current level
+	base_exp = 100
+	current_exp = currently exp are
+	current_max_exp = this level's max exp before leveling up
+	next_max_exp = next level's max exp before leveling up
+
+function:
+	level_up:
+		level=+1
+		current_max_exp=mext_max_exp
+		mext_max_exp=current_max_exp+base_exp*level
+
+what actually happen:
+
+level	exp
+1	100
+2	200
+3	400(200+100*2)
+4	700(400+100*3)
+5	1100(700+100*4)
+...
+
+	 
