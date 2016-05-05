@@ -39,12 +39,18 @@ class Character(object):
     """EXP system"""
     #level up if exp exceed current level exp
     #multi-level up when the exp gained greater than more than 1 level exp limits
+    def power_up(self):
+        self.incRock((self.rock/100)*15)
+        self.incScissor((self.scissor/100)*15)
+        self.incPaper((self.paper/100)*15)
+    
     def level_up(self):
         self.level+=1
         self.current_max_exp = self.next_max_exp
         self.next_max_exp = self.current_max_exp+self.base_exp * self.level #formula
         if self.exp>=self.current_max_exp:
             self.level_up()
+            self.power_up()
         
     def gainExp(self, value):
         self.exp+=value
@@ -52,9 +58,12 @@ class Character(object):
             self.level_up()
 
     def bounty(self):
-        bounty_exp = random_randint(18, 22)
-        if self.exp>0:
-            bounty_exp = (self.exp/100)*20
+        bounty_exp = random.randint(18, 22)
+        if self.exp>150:
+            amount = (self.exp/100)*20
+            minimum = amount-(amount/100*5)
+            maximum = amount+(amount/100*5)
+            bounty_exp = random.randint(minimum, maximum)
         return bounty_exp
             
     """
@@ -62,8 +71,8 @@ class Character(object):
     """
     def _repr(self):
         print(self.name)
-        print("Hammer {0} Scissor {1} Bag {2}".format(self.hammer, self.scissor, self.bag))
-        print("ID {0} Gold {1} Hp {2} Exp {3}".format(self.id, self.gold, self.hp, self.exp))        
+        print("Rock {0} Scissor {1} Paper {2}".format(self.rock, self.scissor, self.paper))
+        print("ID {0} Gold {1} Hp {2} Exp {3} Lev{4}".format(self.id, self.gold, self.hp, self.exp, self.level))        
 
     def getLevel(self):
         return self.level
@@ -139,13 +148,16 @@ class Character(object):
     def setID(self, value):
         self.id = value
 
+    def setExp(self, value): #developer only
+        self.exp=value
+
     """
     All the INCREASE function go here
     """
     def incSpeed(self, value):
         self.speed+=value
 
-    def incROck(self, value):
+    def incRock(self, value):
         self.rock+=value
 
     def incScissor(self, value):

@@ -49,24 +49,47 @@ def fight(p1, p2):
     opt_list = ['rock', 'scissor', 'paper']
     result = 0
     if p1==p2:
-        print('tie ' + opt_list[p1] + ' = ' + opt_list[p2])
+        print('tie ' + opt_list[p1] + ' = ' + opt_list[p2], end=' ')
     elif p2==(p1+1)%3:
-        print('p1 won ' + opt_list[p1] + ' > ' + opt_list[p2])
+        print('p1 won ' + opt_list[p1] + ' > ' + opt_list[p2], end=' ')
         result=1
     else:
-        print('p2 won ' + opt_list[p1] + ' > ' + opt_list[p2])
+        print('p2 won ' + opt_list[p1] + ' > ' + opt_list[p2], end=' ')
         result=2
     return result
+
+def deathMatch(p1, p2):
+    while p1.getHp()>0 and p2.getHp()>0:
+        x=p1.random_choice()
+        y=p2.random_choice()
+        res=fight(x,y)
+        print(p1.getHp(), p2.getHp())
+        p1_won = (p1.getWeapon(x) - p2.getShield())
+        p2_won = (p2.getWeapon(y) - p1.getShield())
+        if res==1:
+            p2.incHp((-1)*p1_won)
+        elif res==2:
+            p1.incHp((-1)*p2_won)
+        SL.save_character(p1)
+        SL.save_character(p2)
+
+    if p1.getHp()==0:
+        winner=p2
+        p2.gainExp(p1.bounty())
+    elif p2.getHp()==0:
+        winner=p1
+        p1.gainExp(p2.bounty())
+    SL.save_character(p1)
+    SL.save_character(p2)
 
 def main():
     p1 = Player()
     p2 = Player()
-    x = p1.random_choice()
-    y = p2.random_choice()
-    
-    print(p1.getName(), x, p2.getName(), y)
-
-    res = fight(x, y)
+    p1.setExp(90)
+    p2.setExp(90)
+    deathMatch(p1, p2)
+    print(p1._repr())
+    print(p2._repr())
     
 
     
@@ -102,7 +125,7 @@ def testEXP():
     print(player.getLevel(), player.getExp())
     SL.save_character(player)
 
-testFight()
+main()
 
 
     
