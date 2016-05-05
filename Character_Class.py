@@ -50,6 +50,12 @@ class Character(object):
         self.exp+=value
         if self.exp >= self.current_max_exp:
             self.level_up()
+
+    def bounty(self):
+        bounty_exp = random_randint(18, 22)
+        if self.exp>0:
+            bounty_exp = (self.exp/100)*20
+        return bounty_exp
             
     """
     All the GET functions go here
