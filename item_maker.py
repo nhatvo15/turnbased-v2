@@ -29,9 +29,10 @@ def saveID(val):
 def newID_validate():
     check = 1
     while check==1:
-        userID = makeID()
-        check = checkID(userID)
-    return userID
+        itemID = makeID()
+        check = checkID(itemID)
+    return itemID
+    
 
 def main():
     #create Wooden Hammer Level 3
@@ -39,8 +40,36 @@ def main():
     weapon.setType('Hammer')
     weapon.setName('Wooden Hammer')
     weapon.setLevel(3)
+    _ID = newID_validate()
+    weapon.setID(_ID)
     weapon._repr()
     SL.save_item(weapon)
+
+    #create mana potion
+    manaPotion = Potion(1)
+    _ID = newID_validate()
+    manaPotion.setID(_ID)
+    manaPotion._repr()
+    SL.save_item(manaPotion)
+
+    """
+    #create consumable potion
+    shieldboost = Consumable()
+    shieldboost.setType(4)
+    shieldboost.setBuff(10)
+    _ID = newID_validate()
+    shieldboost.setID(_ID)
+    shieldboost._repr()
+    SL.save_item(shieldboost)
+    """
+
+def testConsumable():
+    sb = Consumable()
+    sb.setType(4)
+    sb.setBuff(10)
+    _ID = newID_validate()
+    sb.setID(_ID)
+    sb._repr()
 
 main()
     
