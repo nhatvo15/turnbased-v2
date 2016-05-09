@@ -36,6 +36,11 @@ class Character(object):
         self.speed = 5
         self.gold = 0
 
+        """Inventory"""
+        #this variable should be a a list of IDs
+        #inventory is where character can store items, not neccessary equipped
+        self.inventory = []
+
     """EXP system"""
     #level up if exp exceed current level exp
     #multi-level up when the exp gained greater than more than 1 level exp limits
@@ -74,6 +79,9 @@ class Character(object):
         print("Rock {0} Scissor {1} Paper {2}".format(self.rock, self.scissor, self.paper))
         print("ID {0} Gold {1} Hp {2} Exp {3} Lev{4}".format(self.id, self.gold, self.hp, self.exp, self.level))        
 
+    def getInventory(self):
+        return self.inventory
+    
     def getLevel(self):
         return self.level
     
