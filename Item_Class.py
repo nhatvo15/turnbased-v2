@@ -1,6 +1,6 @@
 import random
 
-class weapon(object):
+class Weapon(object):
     def __init__(self):
         self.type = ''
         self.name = ''
@@ -19,13 +19,23 @@ class weapon(object):
     def updateBuff(self):
         self.buff = (10*self.level)/100
 
+    def setType(self, val):
+        self.type = val
+
+    def setName(self, val):
+        self.name = val
+
     def setLevel(self, val):
         self.level = val
         self.updateBuff()
 
-class potion(object):
+    def setBuff(self, val):
+        self.buff = val
+
+class Potion(object):
     def __init__(self, _type):
         self.type = _type
+        self.name = 'Potion'
         if _type==0:
             self.color = 'red'
         elif _type==1:
@@ -40,8 +50,11 @@ class potion(object):
 
     def getBuff(self):
         return self.buff
+
+    def getName(self):
+        return self.name
     
-class consumable(object):
+class Consumable(object):
     """ Enchence code
     1 - rock
     2 - scissor
@@ -53,6 +66,7 @@ class consumable(object):
     def __init(self, _type, _buff):
         self.type = _type
         self.buff = _buff
+        self.name = 'Consumables'
         if self.type==1:
             self.target = 'rock'
         elif self.type==2:
@@ -71,5 +85,8 @@ class consumable(object):
 
     def getBuff(self):
         return self.buff
+
+    def getName(self):
+        return self.name
             
     

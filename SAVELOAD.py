@@ -5,6 +5,7 @@ import pickle
 .load_character(x)
 .save_world(x)
 .load_character(x)
+.save_item(x)
 """
 
 _PATH = PATH()
@@ -47,5 +48,10 @@ class SL(object):
         except FileNotFoundError:
             world = None
         return world
+
+    def save_item(self, item):
+        nameWpath = _PATH.item(item.getName()) #save as 
+        with open(nameWpath, 'wb') as _file:
+            pickle.dump(item, _file, pickle.HIGHEST_PROTOCOL)
 
     
